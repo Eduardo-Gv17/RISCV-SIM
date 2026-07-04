@@ -4,7 +4,7 @@ Simulador de arquitectura RISC-V RV32I con interfaz estilo IDE (registros, desen
 
 ## Cómo ejecutarlo
 
-Solo abre `index.html` en el navegador. No requiere build ni servidor (aunque también puedes servirlo con cualquier servidor estático, por ejemplo `npx serve .`).
+Solo abre `index.html` en el navegador.
 
 ## Estructura del proyecto
 
@@ -22,8 +22,3 @@ riscv-simulator/
     ├── controls.js        # Listeners de botones, atajos de teclado (F7/F8/F9), carga de archivos .bin
     └── main.js           # Inicialización (mensajes de bienvenida y primer render)
 ```
-
-## Notas
-
-- Toda la funcionalidad es exactamente la misma que en la versión de un solo archivo: solo se reorganizó el código en módulos separados por responsabilidad.
-- Los scripts se cargan con `<script src="...">` clásicos (no `type="module"`) y en un orden específico, porque `cpu.js` → `demos.js` → `state.js` → `render.js` → `console.js` → `controls.js` → `main.js` dependen entre sí a través del scope global compartido del documento (igual que en el archivo original).
