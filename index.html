@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>RISC-V RV32I Simulator — CS3051</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div id="titlebar">
+  <div class="tb-tab active"><span class="dot"></span>riscv-simulator.html</div>
+  <div class="tb-tab">README.md</div>
+  <div id="tb-right">RISC-V RV32I Simulator · CS3051 Arquitectura de Computadores 2025-II</div>
+</div>
+
+<div id="toolbar">
+  <button class="btn" id="btn-step">▷ Step <span style="color:var(--text3);font-size:10px">F7</span></button>
+  <button class="btn" id="btn-step10">▷▷ ×10</button>
+  <button class="btn" id="btn-step100">▷▷▷ ×100</button>
+  <button class="btn run" id="btn-run">⚡ Run <span style="font-size:10px;opacity:.8">F8</span></button>
+  <button class="btn" id="btn-reset">↺ Reset <span style="color:var(--text3);font-size:10px">F9</span></button>
+  <div class="sep"></div>
+  <label class="btn" for="file-input">📂 Cargar .bin</label>
+  <input type="file" id="file-input" accept=".bin">
+  <button class="btn" id="btn-demo">🧪 riscvtest</button>
+  <button class="btn" id="btn-demo-qs">📊 quicksort</button>
+  <button class="btn" id="btn-demo-tree">🌳 árbol simétrico</button>
+  <div id="statusbar-top">
+    <span>Estado: <span id="status-txt">Sin programa</span></span>
+  </div>
+</div>
+
+<div id="main">
+
+  <!-- REGISTROS -->
+  <div id="panel-regs">
+    <div class="panel-hdr">Registros</div>
+    <div id="regs-list"></div>
+  </div>
+
+  <!-- CENTRO -->
+  <div id="panel-center">
+    <div id="disasm-panel">
+      <div class="panel-hdr-dis">
+        <span>Desensamblado</span>
+        <span id="dis-pc-lbl" style="color:var(--accent);font-size:10px"></span>
+      </div>
+      <div id="disasm-list"></div>
+    </div>
+    <div id="mem-panel">
+      <div id="mem-toolbar">
+        <label>Memoria</label>
+        <input type="text" id="mem-addr" value="0x00000000">
+        <button class="btn" id="btn-mem-go">Ir</button>
+        <button class="btn" id="btn-mem-pc">→ PC</button>
+        <button class="btn" id="btn-mem-64">0x64</button>
+        <button class="btn" id="btn-mem-1000">0x1000</button>
+      </div>
+      <div id="mem-content"></div>
+    </div>
+  </div>
+
+  <!-- CONSOLA -->
+  <div id="panel-console">
+    <div class="panel-hdr">Output / Terminal</div>
+    <div id="console-out"></div>
+    <div id="console-in-bar">
+      <span id="cin-prompt">›</span>
+      <input type="text" id="console-input" placeholder="step [N]  run  regs  mem 0x64  disasm  help">
+    </div>
+  </div>
+
+</div>
+
+<div id="bottombar">
+  <span>PC: <b id="bb-pc">0x00000000</b></span>
+  <span>Instrucciones: <b id="bb-ic">0</b></span>
+  <span>sp: <b id="bb-sp">0x00000000</b></span>
+  <span>a0 (x10): <b id="bb-a0">0x00000000</b></span>
+  <span>ra (x1): <b id="bb-ra">0x00000000</b></span>
+  <span class="bb-right">F7 Step · F8 Run · F9 Reset · Esc Stop</span>
+</div>
+
+<script src="js/cpu.js"></script>
+<script src="js/demos.js"></script>
+<script src="js/state.js"></script>
+<script src="js/render.js"></script>
+<script src="js/console.js"></script>
+<script src="js/controls.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
